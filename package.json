@@ -1,0 +1,10 @@
+{
+  "name": "lokal-big-blanco-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Copia estática de la landing Lokal Big Blanco - Calzados Elite",
+  "scripts": {
+    "start": "npx --yes serve . -p 3000",
+    "preview": "npm run start"
+  }
+}
