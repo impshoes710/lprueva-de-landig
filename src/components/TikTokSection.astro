@@ -1,0 +1,17 @@
+---
+interface Props {
+  videos: string[];
+}
+
+const { videos } = Astro.props;
+---
+
+<section class="tiktok-section">
+  <h2 class="section-title">Los más virales de Tiktok ¿Ya tienes los tuyos?</h2>
+  <div class="tiktok-grid">
+    {videos.map((src) => (
+      <video src={src} autoplay muted loop playsinline preload="metadata"></video>
+    ))}
+  </div>
+  <p class="tiktok-caption">12M de vistas en Tiktok e Instagram — la gente está obsesionada con estos tenis</p>
+</section>

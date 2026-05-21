@@ -1,0 +1,40 @@
+---
+import productData from '../data/product.json';
+import type { ProductData } from '../types/product';
+import LandingLayout from '../layouts/LandingLayout.astro';
+import CountdownBar from '../components/CountdownBar.astro';
+import ProductHero from '../components/ProductHero.astro';
+import PricingOptions from '../components/PricingOptions.astro';
+import TrustSection from '../components/TrustSection.astro';
+import TikTokSection from '../components/TikTokSection.astro';
+import InstagramCard from '../components/InstagramCard.astro';
+import BenefitsGrid from '../components/BenefitsGrid.astro';
+import ReviewsGallery from '../components/ReviewsGallery.astro';
+import FAQ from '../components/FAQ.astro';
+import BestSellers from '../components/BestSellers.astro';
+import Footer from '../components/Footer.astro';
+import StickyCTA from '../components/StickyCTA.astro';
+
+const product = productData as ProductData;
+const pageTitle = `${product.title} | ${product.color} | CalzadosElite`;
+---
+
+<LandingLayout title={pageTitle}>
+  <div class="page page-with-sticky">
+    <CountdownBar />
+    <ProductHero product={product} />
+    <PricingOptions product={product} />
+    <div class="cta-section">
+      <a class="btn-primary" href="#comprar">Pagar en casa</a>
+    </div>
+    <TrustSection items={product.trust} />
+    <TikTokSection videos={product.videos} />
+    <InstagramCard instagram={product.instagram} />
+    <BenefitsGrid />
+    <ReviewsGallery />
+    <FAQ faqs={product.faqs} whatsappUrl={product.whatsappUrl} />
+    <BestSellers products={product.bestSellers} catalogUrl={product.catalogUrl} />
+    <Footer />
+    <StickyCTA />
+  </div>
+</LandingLayout>

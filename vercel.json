@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/oferta/lokal-big-blanco",
+      "destination": "/",
+      "permanent": false
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+---
+import { formatCOP } from '../lib/format';
+import type { ProductData } from '../types/product';
+
+interface Props {
+  product: ProductData;
+}
+
+const { product } = Astro.props;
+---
+
+<section class="pricing-section" id="comprar">
+  <div class="pricing-grid" data-pricing>
+    <label class="pricing-card is-selected">
+      <input type="radio" name="quantity" value="1" checked data-qty-input />
+      <div class="pricing-card-header">
+        <div>
+          <div class="pricing-card-title">1 par</div>
+          <div class="pricing-card-sub">Envío gratis incluido</div>
+        </div>
+      </div>
+      <div class="pricing-card-prices">
+        <span class="price-old">{formatCOP(product.compareAtPrice)}</span>
+        <span class="price-new">{formatCOP(product.priceOnePair)}</span>
+      </div>
+    </label>
+
+    <label class="pricing-card">
+      <input type="radio" name="quantity" value="2" data-qty-input />
+      <div class="pricing-card-header">
+        <div>
+          <div class="pricing-card-title">2 pares</div>
+          <div class="pricing-card-sub">Cada par a {formatCOP(product.twoPairUnitPrice)}!</div>
+        </div>
+      </div>
+      <div class="pricing-card-prices">
+        <span class="price-old">{formatCOP(product.compareAtTwoPairs)}</span>
+        <span class="price-new">{formatCOP(product.priceTwoPairs)}</span>
+      </div>
+    </label>
+  </div>
+</section>
+
+<script>
+  function initPricing() {
+    const cards = document.querySelectorAll('[data-pricing] .pricing-card');
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        cards.forEach((c) => c.classList.remove('is-selected'));
+        card.classList.add('is-selected');
+        const input = card.querySelector('input');
+        if (input instanceof HTMLInputElement) input.checked = true;
+      });
+    });
+  }
+
+  initPricing();
+  document.addEventListener('astro:page-load', initPricing);
+</script>

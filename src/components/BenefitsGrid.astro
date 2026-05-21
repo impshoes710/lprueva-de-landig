@@ -1,0 +1,24 @@
+---
+const benefits = [
+  {
+    title: 'Logística confiable',
+    description: 'La transportadora recoge nuestros paquetes a diario. Envíos seguros a todo Colombia.',
+  },
+  {
+    title: 'Atención personalizada',
+    description: 'Nuestro equipo te acompaña en todo el proceso. Atención rápida y cercana.',
+  },
+];
+---
+
+<section>
+  <h2 class="section-title">Ellos ya usan nuestros tenis ¿Quieres ser el próximo?</h2>
+  <div class="benefits-grid">
+    {benefits.map((b) => (
+      <article class="benefit-card">
+        <h3>{b.title}</h3>
+        <p>{b.description}</p>
+      </article>
+    ))}
+  </div>
+</section>

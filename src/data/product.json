@@ -1,0 +1,132 @@
+{
+  "handle": "lokal-big-blanco",
+  "title": "Lokal Big",
+  "color": "Blanco",
+  "discount": 30,
+  "features": [
+    "Reflectivo",
+    "Ultra ligeras (250g)"
+  ],
+  "compareAtPrice": 210000,
+  "priceOnePair": 119000,
+  "priceTwoPairs": 200000,
+  "compareAtTwoPairs": 420000,
+  "twoPairUnitPrice": 100000,
+  "images": [
+    "https://cdn.shopify.com/s/files/1/0948/6296/7074/files/s2_lb_b_1.png?width=900&quality=70&format=webp",
+    "https://cdn.shopify.com/s/files/1/0948/6296/7074/files/s2_lb_b_2.png?width=900&quality=70&format=webp",
+    "https://cdn.shopify.com/s/files/1/0948/6296/7074/files/s2_lb_b_3.png?width=900&quality=70&format=webp",
+    "https://cdn.shopify.com/s/files/1/0948/6296/7074/files/s2_lb_b_4.png?width=900&quality=70&format=webp"
+  ],
+  "videos": [
+    "https://cdn.shopify.com/videos/c/vp/190aca21927b48d2a4a17732d2f63be5/190aca21927b48d2a4a17732d2f63be5.SD-480p-0.9Mbps-59882250.mp4",
+    "https://cdn.shopify.com/videos/c/vp/930c168494704fc19b89b659e51ae942/930c168494704fc19b89b659e51ae942.SD-480p-0.9Mbps-59941993.mp4"
+  ],
+  "bestSellers": [
+    {
+      "handle": "lokal-preto-negro-morado",
+      "title": "Lokal Preto | Negro Morado",
+      "price": 149000,
+      "compareAtPrice": 210000,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0948/6296/7074/files/prt_nm_2.png?width=900&quality=70&format=webp"
+    },
+    {
+      "handle": "lokal-big-blanco",
+      "title": "Lokal Big | Blanco",
+      "price": 149000,
+      "compareAtPrice": 210000,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0948/6296/7074/files/s2_lb_b_4.png?width=900&quality=70&format=webp"
+    },
+    {
+      "handle": "lokal-big-camuflado-test",
+      "title": "Lokal Big | Blanco Camuflado",
+      "price": 149000,
+      "compareAtPrice": 210000,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0948/6296/7074/files/s2_lb_bc_4.png?width=900&quality=70&format=webp"
+    },
+    {
+      "handle": "alexander-mxqueen-black-diamond",
+      "title": "McQueen Diamond | Negro",
+      "price": 169000,
+      "compareAtPrice": 250000,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0948/6296/7074/files/al_mc_ne_4.png?width=900&quality=70&format=webp"
+    },
+    {
+      "handle": "tag-skate-rojo",
+      "title": "Tag Skate | Rojo",
+      "price": 149000,
+      "compareAtPrice": 210000,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0948/6296/7074/files/ts_ro_3.png?width=900&quality=70&format=webp"
+    },
+    {
+      "handle": "lokal-tag-blanco",
+      "title": "Tag Skate | Blanco",
+      "price": 149000,
+      "compareAtPrice": 210000,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0948/6296/7074/files/ts_bl_3.png?width=900&quality=70&format=webp"
+    },
+    {
+      "handle": "lokal-big-negro-morado",
+      "title": "Lokal Big | Negro Morado",
+      "price": 149000,
+      "compareAtPrice": 210000,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0948/6296/7074/files/s2_lb_nm_4.png?width=900&quality=70&format=webp"
+    },
+    {
+      "handle": "lokal-preto-negro",
+      "title": "Lokal Preto | Negro",
+      "price": 149000,
+      "compareAtPrice": 210000,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0948/6296/7074/files/prt_nb_2.png?width=900&quality=70&format=webp"
+    },
+    {
+      "handle": "lokal-preto-gris",
+      "title": "Lokal Preto | Gris",
+      "price": 149000,
+      "compareAtPrice": 210000,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0948/6296/7074/files/prt_gr_2.png?width=900&quality=70&format=webp"
+    },
+    {
+      "handle": "lokal-preto-negro-morado-copia",
+      "title": "Lokal Preto | Blanco",
+      "price": 149000,
+      "compareAtPrice": 210000,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0948/6296/7074/files/prt_bl_2.png?width=900&quality=70&format=webp"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "¿Que pasa si pido la talla equivocada?",
+      "answer": "No te preocupes, tenemos cambio de talla gratis. Si no te queda bien, solo nos avisas y te ayudamos a cambiarla sin costo adicional."
+    },
+    {
+      "question": "¿Cuánto tardarán en llegar?",
+      "answer": "El tiempo de entrega suele ser de 2 a 5 días hábiles. No te preocupes, te vamos informando el estado del envío y siempre tendrás a alguien del equipo disponible para responderte."
+    }
+  ],
+  "trust": [
+    {
+      "title": "Tiempo de entrega",
+      "description": "Pídelos hoy y paga al recibir en la puerta de tu casa. El tiempo estimado de entrega es de 2 a 5 días hábiles según tu ciudad.",
+      "video": "/shipping.mp4"
+    },
+    {
+      "title": "3 meses de garantía",
+      "description": "Todos nuestros tenis cuentan con 3 meses de garantía contra defectos de fabricación. Si algo no está bien, te ayudamos a resolverlo sin costo adicional.",
+      "video": "/support.mp4"
+    },
+    {
+      "title": "Cambios de talla gratis",
+      "description": "Si al recibir tus tenis la talla no te queda bien, no te preocupes. Realizamos el cambio de talla totalmente gratis para que encuentres la ideal.",
+      "video": null
+    }
+  ],
+  "instagram": {
+    "posts": 699,
+    "followers": "578 mil",
+    "following": 2703,
+    "bio": "+50k pares entregados en 2025, gracias por recomendarnos y apoyarnos desde el día uno 😊"
+  },
+  "whatsappUrl": "https://wa.me/573001234567",
+  "catalogUrl": "https://calzadoselite.co"
+}

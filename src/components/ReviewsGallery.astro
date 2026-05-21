@@ -1,0 +1,35 @@
+---
+const reviewImages = Array.from({ length: 8 }, (_, i) => `/store_reviews/${i + 1}.png`);
+---
+
+<section class="reviews-section">
+  <div class="swiper reviews-swiper" data-reviews-swiper>
+    <div class="swiper-wrapper">
+      {reviewImages.map((src, i) => (
+        <div class="swiper-slide">
+          <img src={src} alt={`Reseña de cliente ${i + 1}`} loading="lazy" width="320" height="400" />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import Swiper from 'swiper';
+  import 'swiper/css';
+
+  function initReviewsSwiper() {
+    const el = document.querySelector('[data-reviews-swiper]');
+    if (!el || el.classList.contains('swiper-initialized')) return;
+
+    new Swiper(el as HTMLElement, {
+      slidesPerView: 'auto',
+      spaceBetween: 12,
+      centeredSlides: true,
+      loop: true,
+    });
+  }
+
+  initReviewsSwiper();
+  document.addEventListener('astro:page-load', initReviewsSwiper);
+</script>

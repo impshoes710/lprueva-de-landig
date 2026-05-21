@@ -1,0 +1,30 @@
+---
+import { formatCOP } from '../lib/format';
+import type { BestSellerProduct } from '../types/product';
+
+interface Props {
+  products: BestSellerProduct[];
+  catalogUrl: string;
+}
+
+const { products, catalogUrl } = Astro.props;
+---
+
+<section class="best-sellers">
+  <h2 class="section-title">Más vendidos de la semana</h2>
+  <div class="product-grid">
+    {products.map((p) => (
+      <a class="product-card" href={`${catalogUrl}/products/${p.handle}`} target="_blank" rel="noopener noreferrer">
+        <img src={p.imageUrl} alt={p.title} loading="lazy" width="200" height="200" />
+        <div class="product-card-body">
+          <h3>{p.title}</h3>
+          <div class="product-card-prices">
+            <span class="price-old">{formatCOP(p.compareAtPrice)}</span>
+            <span class="price-new">{formatCOP(p.price)}</span>
+          </div>
+        </div>
+      </a>
+    ))}
+  </div>
+  <a class="catalog-link" href={catalogUrl} target="_blank" rel="noopener noreferrer">Ver catálogo completo</a>
+</section>

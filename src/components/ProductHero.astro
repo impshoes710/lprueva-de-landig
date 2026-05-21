@@ -1,0 +1,60 @@
+---
+import type { ProductData } from '../types/product';
+
+interface Props {
+  product: ProductData;
+}
+
+const { product } = Astro.props;
+---
+
+<section class="hero">
+  <div class="hero-gallery">
+    <div class="swiper hero-swiper" data-hero-swiper>
+      <div class="swiper-wrapper">
+        {product.images.map((src, i) => (
+          <div class="swiper-slide">
+            <img src={src} alt={`${product.title} - imagen ${i + 1}`} width="900" height="900" loading={i === 0 ? 'eager' : 'lazy'} />
+          </div>
+        ))}
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+
+  <div class="hero-info">
+    <div class="badge-discount" style="margin-bottom: 10px;">{product.discount}% OFF</div>
+    <h1 class="hero-title">{product.title}</h1>
+    <div class="hero-features">
+      {product.features.map((feature) => (
+        <span class="feature-pill">{feature}</span>
+      ))}
+    </div>
+  </div>
+
+  <div class="liquidation-banner">
+    <span>⚠️ En liquidación por tiempo limitado</span>
+    <span class="timer" data-countdown-inline>Termina en 00h 00m 00s</span>
+  </div>
+</section>
+
+<script>
+  import Swiper from 'swiper';
+  import { Pagination } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/pagination';
+
+  function initHeroSwiper() {
+    const el = document.querySelector('[data-hero-swiper]');
+    if (!el || el.classList.contains('swiper-initialized')) return;
+
+    new Swiper(el as HTMLElement, {
+      modules: [Pagination],
+      loop: true,
+      pagination: { el: '.swiper-pagination', clickable: true },
+    });
+  }
+
+  initHeroSwiper();
+  document.addEventListener('astro:page-load', initHeroSwiper);
+</script>

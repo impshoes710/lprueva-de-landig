@@ -1,0 +1,26 @@
+---
+import type { TrustItem } from '../types/product';
+
+interface Props {
+  items: TrustItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class="trust-section">
+  {items.map((item) => (
+    <details class="trust-card">
+      <summary>
+        {item.title}
+        <span aria-hidden="true">+</span>
+      </summary>
+      <div class="trust-card-body">
+        <p>{item.description}</p>
+        {item.video && (
+          <video src={item.video.replace('https://lp.calzadoselite.co', '')} autoplay muted loop playsinline></video>
+        )}
+      </div>
+    </details>
+  ))}
+</section>

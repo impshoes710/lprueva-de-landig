@@ -1,24 +1,58 @@
-# Lokal Big Blanco — Landing (copia)
+# Lokal Big Blanco — Landing (Astro + Vercel)
 
-Copia estática de la página de oferta:
+Réplica de la landing de oferta de Calzados Elite, construida con **Astro** y lista para desplegar en **Vercel**.
 
-https://lp.calzadoselite.co/oferta/lokal-big-blanco
+Página original: https://lp.calzadoselite.co/oferta/lokal-big-blanco
 
-## Contenido
+## Stack
 
-- `index.html` — HTML completo de la landing (estilos y scripts incluidos)
-- Imágenes, videos y fuentes se cargan desde el sitio original (`lp.calzadoselite.co` y CDN de Shopify)
+- [Astro](https://astro.build) 6 (sitio estático)
+- [@astrojs/vercel](https://docs.astro.build/en/guides/deploy/vercel/) — adaptador para Vercel
+- [Swiper](https://swiperjs.com) — galería de producto y reseñas
 
-## Vista local
+## Desarrollo local
 
 ```bash
-npm start
+npm install
+npm run dev
 ```
 
-Abre http://localhost:3000 en el navegador.
+Abre http://localhost:4321
 
-También puedes abrir `index.html` directamente en el navegador; algunos recursos pueden requerir un servidor local por políticas CORS.
+## Build
 
-## Nota
+```bash
+npm run build
+npm run preview
+```
 
-Esta es una réplica visual del HTML publicado. Los enlaces de compra y formularios apuntan al comportamiento embebido del sitio original. Para un entorno de producción propio, sustituye URLs y endpoints según tu backend.
+## Despliegue en Vercel
+
+1. Importa el repositorio en [vercel.com](https://vercel.com)
+2. Vercel detecta Astro automáticamente
+3. Build command: `npm run build`
+4. Output: gestionado por `@astrojs/vercel` (estático)
+
+También puedes desplegar con la CLI:
+
+```bash
+npx vercel
+```
+
+La ruta `/oferta/lokal-big-blanco` redirige a `/` (configurado en `vercel.json` y en Astro).
+
+## Estructura
+
+```
+src/
+  components/     # Secciones de la landing
+  data/           # product.json — datos del producto
+  layouts/        # Layout base
+  pages/          # index.astro + redirect de oferta
+  styles/         # CSS global y de la landing
+public/           # Videos, reseñas, logo
+```
+
+## Personalización
+
+Edita `src/data/product.json` para precios, imágenes, FAQs y productos relacionados.

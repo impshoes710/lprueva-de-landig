@@ -1,0 +1,28 @@
+---
+import type { ProductData } from '../types/product';
+
+interface Props {
+  instagram: ProductData['instagram'];
+}
+
+const { instagram } = Astro.props;
+const logo = '/dark_ins_logo.png';
+---
+
+<div class="instagram-card">
+  <div class="instagram-header">
+    <div class="instagram-avatar">
+      <img src={logo} alt="Calzados Elite" width="52" height="52" />
+    </div>
+    <div>
+      <strong>Calzados Elite</strong>
+      <p style="margin:4px 0 0;font-size:0.8125rem;color:var(--text-muted);">@{instagram.followers ? 'calzadoselite' : 'calzadoselite'}</p>
+    </div>
+  </div>
+  <div class="instagram-stats">
+    <div><strong>{instagram.posts}</strong><span>publicaciones</span></div>
+    <div><strong>{instagram.followers}</strong><span>seguidores</span></div>
+    <div><strong>{instagram.following.toLocaleString('es-CO')}</strong><span>seguidos</span></div>
+  </div>
+  <p style="margin:0;font-size:0.875rem;line-height:1.5;">{instagram.bio}</p>
+</div>
