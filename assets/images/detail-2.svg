@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="500" viewBox="0 0 700 500">
+  <rect width="700" height="500" fill="#f3f3f3"/>
+  <rect x="100" y="60" width="500" height="380" rx="20" fill="#dcdcdc"/>
+  <text x="350" y="270" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" fill="#9e9e9e">DETALLE 2</text>
+</svg>
