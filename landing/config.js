@@ -1,61 +1,126 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════
  *  LANDING PAGE — CONFIGURACIÓN CENTRAL
- *  Edita SOLO este archivo para cambiar producto, textos, imágenes y diseño.
+ *  Edita SOLO este archivo para textos, precios y colores.
  *  NO modifiques index.html ni los archivos de /sections/
  * ═══════════════════════════════════════════════════════════════════════════
  *
  *  GUÍA RÁPIDA DE ADMINISTRACIÓN
  *  ─────────────────────────────
  *
- *  1. CÓMO CAMBIAR IMÁGENES
- *     • Sube tus archivos a: landing/assets/images/
- *     • Actualiza la ruta en las secciones correspondientes (hero, gallery, etc.)
- *     • Formato recomendado: WebP o JPG optimizado (< 200 KB por imagen)
- *     • Ejemplo: image: "assets/images/mi-producto.webp"
- *     • Para SEO, usa el campo "alt" descriptivo en cada imagen
+ *  1. CÓMO CAMBIAR IMÁGENES (MÉTODO RÁPIDO — SIN TOCAR ESTE ARCHIVO)
+ *     • Todas las imágenes usan formato PNG con nombres FIJOS
+ *     • Ve a: landing/assets/images/
+ *     • Reemplaza cada PNG manteniendo el MISMO nombre de archivo
+ *     • Ejemplo: arrastra tu foto sobre hero.png → listo, no editas config
+ *
+ *     MAPA DE ARCHIVOS PNG (assets/images/):
+ *     ┌─────────────────┬──────────────────────────────────────────────┐
+ *     │ hero.png        │ Imagen principal del producto (Hero)         │
+ *     │ gallery-1.png   │ Galería — slide 1                            │
+ *     │ gallery-2.png   │ Galería — slide 2                            │
+ *     │ gallery-3.png   │ Galería — slide 3                            │
+ *     │ detail-1.png    │ Bloque visual detalle 1                      │
+ *     │ detail-2.png    │ Bloque visual detalle 2                      │
+ *     │ feature-1.png   │ Característica 1                             │
+ *     │ feature-2.png   │ Característica 2                             │
+ *     │ feature-3.png   │ Característica 3                             │
+ *     │ feature-4.png   │ Característica 4                             │
+ *     │ avatar-1.png    │ Foto testimonio 1                            │
+ *     │ avatar-2.png    │ Foto testimonio 2                            │
+ *     │ avatar-3.png    │ Foto testimonio 3                            │
+ *     │ cta-bg.png      │ Fondo sección CTA final                     │
+ *     │ video-poster.png│ Poster de video                              │
+ *     │ og-image.png    │ Imagen para WhatsApp / Facebook / SEO        │
+ *     └─────────────────┴──────────────────────────────────────────────┘
+ *
+ *     Tamaños recomendados:
+ *     • hero / gallery / features → 800×800 px o 1:1
+ *     • detail / cta-bg → 1200×800 px o 16:9
+ *     • avatars → 120×120 px
+ *     • og-image → 1200×630 px
+ *     • Peso ideal: < 300 KB por PNG (comprime en tinypng.com)
  *
  *  2. CÓMO CAMBIAR VIDEOS
- *     • Sube tus videos a: landing/assets/videos/
- *     • Usa formato MP4 (H.264) para máxima compatibilidad móvil
- *     • Ejemplo: src: "assets/videos/demo.mp4", poster: "assets/images/poster.jpg"
- *     • Para YouTube/Vimeo: type: "embed", src: "URL_COMPLETA_DEL_VIDEO"
+ *     • Sube MP4 a: landing/assets/videos/
+ *     • Nombres sugeridos: hero.mp4, testimonial-1.mp4
+ *     • Edita hero.video.src o videoTestimonials.items[].src en este archivo
+ *     • Poster del video → reemplaza video-poster.png (sin editar config)
  *
  *  3. CÓMO CAMBIAR TEXTOS
- *     • Todos los textos están en este archivo, organizados por sección
- *     • Busca la sección (hero, benefits, faq, etc.) y edita title, subtitle, description
- *     • Los textos de botones están en: buttons y whatsapp
+ *     • Todos los textos están en este archivo por sección
+ *     • Botones → buttons | WhatsApp → whatsapp
  *
  *  4. CÓMO CAMBIAR PRECIOS
- *     • Edita product.price (precio actual), product.comparePrice (precio anterior)
- *     • product.discount se calcula automáticamente o puedes definirlo manualmente
- *     • product.currency define el símbolo de moneda
+ *     • product.price (actual) | product.comparePrice (anterior)
+ *     • product.discount se calcula solo si comparePrice > price
  *
  *  5. CÓMO CAMBIAR COLORES
- *     • Edita theme.colors — todos los colores globales de la landing
- *     • primary: color principal de botones y acentos
- *     • secondary: color secundario
- *     • accent: color de ofertas y badges
- *     • Los cambios se aplican automáticamente a toda la página
+ *     • theme.colors — se aplican a toda la landing automáticamente
  *
  *  6. CÓMO CAMBIAR TESTIMONIOS
- *     • Edita testimonials.items[] — cada objeto es un testimonio
- *     • Campos: name, city, comment, rating (1-5), photo
- *     • Para video testimonios: edita videoTestimonials.items[]
+ *     • testimonials.items[] → name, city, comment, rating
+ *     • Fotos → reemplaza avatar-1.png, avatar-2.png, avatar-3.png
  *
- *  TIEMPO ESTIMADO DE CAMBIO DE PRODUCTO: < 3 minutos
+ *  REGENERAR PLACEHOLDERS PNG: python3 landing/scripts/generate-placeholders.py
  * ═══════════════════════════════════════════════════════════════════════════
  */
 
+/* ─── RUTAS PNG FIJAS — Reemplaza archivos, no edites rutas ─────────────── */
+const ASSETS = {
+  images: {
+    hero:         "assets/images/hero.png",
+    og:           "assets/images/og-image.png",
+    gallery: [
+      "assets/images/gallery-1.png",
+      "assets/images/gallery-2.png",
+      "assets/images/gallery-3.png"
+    ],
+    details: [
+      "assets/images/detail-1.png",
+      "assets/images/detail-2.png"
+    ],
+    features: [
+      "assets/images/feature-1.png",
+      "assets/images/feature-2.png",
+      "assets/images/feature-3.png",
+      "assets/images/feature-4.png"
+    ],
+    avatars: [
+      "assets/images/avatar-1.png",
+      "assets/images/avatar-2.png",
+      "assets/images/avatar-3.png"
+    ],
+    ctaBg:        "assets/images/cta-bg.png",
+    videoPoster:  "assets/images/video-poster.png"
+  },
+  icons: {
+    shipping:     "assets/icons/shipping.png",
+    quality:      "assets/icons/quality.png",
+    secure:       "assets/icons/secure.png",
+    support:      "assets/icons/support.png",
+    return:       "assets/icons/return.png",
+    cod:          "assets/icons/cod.png",
+    instagram:    "assets/icons/instagram.png",
+    facebook:     "assets/icons/facebook.png",
+    tiktok:       "assets/icons/tiktok.png",
+    visa:         "assets/icons/visa.png",
+    mastercard:   "assets/icons/mastercard.png",
+    favicon:      "assets/icons/favicon.png"
+  }
+};
+
 const LANDING_CONFIG = {
+
+  assets: ASSETS,
 
   /* ─── SEO & META ─────────────────────────────────────────────────────── */
   meta: {
     title: "",
     description: "",
     keywords: "",
-    ogImage: "assets/images/hero.svg",
-    favicon: "assets/icons/favicon.png",
+    ogImage: ASSETS.images.og,
+    favicon: ASSETS.icons.favicon,
     lang: "es"
   },
 
@@ -146,27 +211,21 @@ const LANDING_CONFIG = {
   hero: {
     enabled: true,
     image: {
-      src: "assets/images/hero.svg",
+      src: ASSETS.images.hero,
       alt: ""
     },
     video: {
       enabled: false,
       type: "local",
-      src: "",
-      poster: "",
+      src: "assets/videos/hero.mp4",
+      poster: ASSETS.images.videoPoster,
       autoplay: true,
       muted: true,
       loop: true
     },
     badge: {
-      shipping: {
-        enabled: true,
-        text: ""
-      },
-      cod: {
-        enabled: true,
-        text: ""
-      }
+      shipping: { enabled: true, text: "" },
+      cod: { enabled: true, text: "" }
     },
     title: "",
     subtitle: "",
@@ -188,11 +247,12 @@ const LANDING_CONFIG = {
     enableThumbnails: true,
     autoplay: false,
     autoplayInterval: 5000,
-    items: [
-      { type: "image", src: "assets/images/gallery-1.svg", alt: "", thumbnail: "assets/images/gallery-1.svg" },
-      { type: "image", src: "assets/images/gallery-2.svg", alt: "", thumbnail: "assets/images/gallery-2.svg" },
-      { type: "image", src: "assets/images/gallery-3.svg", alt: "", thumbnail: "assets/images/gallery-3.svg" }
-    ]
+    items: ASSETS.images.gallery.map(src => ({
+      type: "image",
+      src,
+      alt: "",
+      thumbnail: src
+    }))
   },
 
   /* ─── SECCIÓN 3: BENEFICIOS ──────────────────────────────────────────── */
@@ -201,10 +261,10 @@ const LANDING_CONFIG = {
     title: "",
     subtitle: "",
     items: [
-      { icon: "assets/icons/shipping.svg", title: "", description: "" },
-      { icon: "assets/icons/quality.svg", title: "", description: "" },
-      { icon: "assets/icons/secure.svg", title: "", description: "" },
-      { icon: "assets/icons/support.svg", title: "", description: "" }
+      { icon: ASSETS.icons.shipping, title: "", description: "" },
+      { icon: ASSETS.icons.quality, title: "", description: "" },
+      { icon: ASSETS.icons.secure, title: "", description: "" },
+      { icon: ASSETS.icons.support, title: "", description: "" }
     ]
   },
 
@@ -213,15 +273,14 @@ const LANDING_CONFIG = {
     enabled: true,
     title: "",
     subtitle: "",
-    items: [
-      { image: "assets/images/detail-1.svg", title: "", description: "" },
-      { image: "assets/images/detail-2.svg", title: "", description: "" },
-      { image: "assets/images/gallery-1.svg", title: "", description: "" },
-      { image: "assets/images/gallery-2.svg", title: "", description: "" }
-    ]
+    items: ASSETS.images.features.map(image => ({
+      image,
+      title: "",
+      description: ""
+    }))
   },
 
-  /* ─── SECCIÓN 5: DETALLES VISUALES (alternados) ──────────────────────── */
+  /* ─── SECCIÓN 5: DETALLES VISUALES ───────────────────────────────────── */
   details: {
     enabled: true,
     title: "",
@@ -229,14 +288,14 @@ const LANDING_CONFIG = {
     blocks: [
       {
         imagePosition: "left",
-        image: { src: "assets/images/detail-1.svg", alt: "" },
+        image: { src: ASSETS.images.details[0], alt: "" },
         title: "",
         description: "",
         button: { text: "", url: "#comprar" }
       },
       {
         imagePosition: "right",
-        image: { src: "assets/images/detail-2.svg", alt: "" },
+        image: { src: ASSETS.images.details[1], alt: "" },
         title: "",
         description: "",
         button: { text: "", url: "#comprar" }
@@ -265,11 +324,13 @@ const LANDING_CONFIG = {
     enabled: true,
     title: "",
     subtitle: "",
-    items: [
-      { photo: "assets/images/avatar.svg", name: "", city: "", comment: "", rating: 5 },
-      { photo: "assets/images/avatar.svg", name: "", city: "", comment: "", rating: 5 },
-      { photo: "assets/images/avatar.svg", name: "", city: "", comment: "", rating: 5 }
-    ]
+    items: ASSETS.images.avatars.map(photo => ({
+      photo,
+      name: "",
+      city: "",
+      comment: "",
+      rating: 5
+    }))
   },
 
   /* ─── SECCIÓN 8: VIDEO TESTIMONIOS ───────────────────────────────────── */
@@ -278,7 +339,13 @@ const LANDING_CONFIG = {
     title: "",
     subtitle: "",
     items: [
-      { type: "local", src: "", poster: "assets/images/video-poster.svg", name: "", city: "" }
+      {
+        type: "local",
+        src: "assets/videos/testimonial-1.mp4",
+        poster: ASSETS.images.videoPoster,
+        name: "",
+        city: ""
+      }
     ]
   },
 
@@ -319,10 +386,10 @@ const LANDING_CONFIG = {
     title: "",
     subtitle: "",
     items: [
-      { icon: "assets/icons/secure.svg", title: "", description: "" },
-      { icon: "assets/icons/shipping.svg", title: "", description: "" },
-      { icon: "assets/icons/return.svg", title: "", description: "" },
-      { icon: "assets/icons/cod.svg", title: "", description: "" }
+      { icon: ASSETS.icons.secure, title: "", description: "" },
+      { icon: ASSETS.icons.shipping, title: "", description: "" },
+      { icon: ASSETS.icons.return, title: "", description: "" },
+      { icon: ASSETS.icons.cod, title: "", description: "" }
     ]
   },
 
@@ -330,7 +397,7 @@ const LANDING_CONFIG = {
   cta: {
     enabled: true,
     id: "comprar",
-    backgroundImage: "assets/images/cta-bg.svg",
+    backgroundImage: ASSETS.images.ctaBg,
     overlay: 0.55,
     title: "",
     subtitle: "",
@@ -342,17 +409,17 @@ const LANDING_CONFIG = {
     enabled: true,
     copyright: "",
     social: [
-      { platform: "instagram", url: "", icon: "assets/icons/instagram.svg" },
-      { platform: "facebook", url: "", icon: "assets/icons/facebook.svg" },
-      { platform: "tiktok", url: "", icon: "assets/icons/tiktok.svg" }
+      { platform: "instagram", url: "", icon: ASSETS.icons.instagram },
+      { platform: "facebook", url: "", icon: ASSETS.icons.facebook },
+      { platform: "tiktok", url: "", icon: ASSETS.icons.tiktok }
     ],
     paymentMethods: {
       enabled: true,
       title: "",
       icons: [
-        "assets/icons/visa.svg",
-        "assets/icons/mastercard.svg",
-        "assets/icons/cod.svg"
+        ASSETS.icons.visa,
+        ASSETS.icons.mastercard,
+        ASSETS.icons.cod
       ]
     },
     policies: [
@@ -388,5 +455,4 @@ const LANDING_CONFIG = {
   ]
 };
 
-/* Disponible globalmente para app.js */
 window.LANDING_CONFIG = LANDING_CONFIG;
