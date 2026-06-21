@@ -20,6 +20,11 @@
  *     │ gallery-1.png   │ Galería — slide 1                            │
  *     │ gallery-2.png   │ Galería — slide 2                            │
  *     │ gallery-3.png   │ Galería — slide 3                            │
+ *     │ gallery-4.png   │ Galería — slide 4                            │
+ *     │ gallery-5.png   │ Galería — slide 5                            │
+ *     │ gallery-6.png   │ Galería — slide 6                            │
+ *     │ gallery-7.png   │ Galería — slide 7                            │
+ *     │ gallery-8.png   │ Galería — slide 8                            │
  *     │ detail-1.png    │ Bloque visual detalle 1                      │
  *     │ detail-2.png    │ Bloque visual detalle 2                      │
  *     │ feature-1.png   │ Característica 1                             │
@@ -40,6 +45,14 @@
  *     • avatars → 120×120 px
  *     • og-image → 1200×630 px
  *     • Peso ideal: < 300 KB por PNG (comprime en tinypng.com)
+ *
+ *     REDIMENSIONAR AUTOMÁTICO (recomendado):
+ *     1. Coloca tus fotos en: landing/assets/inbox/
+ *        (hero.jpg, gallery-4.png, feature-1.webp, etc.)
+ *     2. Ejecuta: npm run landing:resize
+ *     3. Los PNG se generan en assets/images/ al tamaño exacto
+ *
+ *     Cambiar cantidad de slides: edita GALLERY_SLOT_COUNT abajo
  *
  *  2. CÓMO CAMBIAR VIDEOS
  *     • Sube MP4 a: landing/assets/videos/
@@ -62,20 +75,22 @@
  *     • testimonials.items[] → name, city, comment, rating
  *     • Fotos → reemplaza avatar-1.png, avatar-2.png, avatar-3.png
  *
- *  REGENERAR PLACEHOLDERS PNG: python3 landing/scripts/generate-placeholders.py
+ *  REGENERAR PLACEHOLDERS: npm run landing:assets
+ *  REDIMENSIONAR FOTOS:   npm run landing:resize
  * ═══════════════════════════════════════════════════════════════════════════
  */
+
+/* Cantidad de slides en galería (gallery-1.png … gallery-N.png) */
+const GALLERY_SLOT_COUNT = 8;
 
 /* ─── RUTAS PNG FIJAS — Reemplaza archivos, no edites rutas ─────────────── */
 const ASSETS = {
   images: {
     hero:         "assets/images/hero.png",
     og:           "assets/images/og-image.png",
-    gallery: [
-      "assets/images/gallery-1.png",
-      "assets/images/gallery-2.png",
-      "assets/images/gallery-3.png"
-    ],
+    gallery: Array.from({ length: GALLERY_SLOT_COUNT }, (_, i) =>
+      `assets/images/gallery-${i + 1}.png`
+    ),
     details: [
       "assets/images/detail-1.png",
       "assets/images/detail-2.png"

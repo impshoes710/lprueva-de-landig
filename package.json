@@ -7,6 +7,8 @@
     "start": "npx --yes serve . -p 3000",
     "preview": "npm run start",
     "landing": "npx --yes serve landing -p 3001",
-    "landing:assets": "python3 landing/scripts/generate-placeholders.py"
+    "landing:assets": "python3 landing/scripts/generate-placeholders.py",
+    "landing:resize": "python3 landing/scripts/resize-images.py --inbox",
+    "landing:resize:all": "python3 landing/scripts/resize-images.py --all"
   }
 }
