@@ -4,9 +4,7 @@
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
-ROOT = Path(__file__).resolve().parent.parent / "assets"
-IMAGES = ROOT / "images"
-ICONS = ROOT / "icons"
+from asset_specs import GALLERY_SLOT_COUNT, IMAGE_SPECS, ICONS_DIR, IMAGES_DIR
 
 BG = (245, 245, 245)
 BOX = (224, 224, 224)
@@ -86,38 +84,49 @@ def social_icon(path: Path, letter: str, bg_color):
 
 
 def main():
-    print("Generando imágenes PNG...")
-    placeholder(IMAGES / "hero.png", (800, 800), "HERO")
-    placeholder(IMAGES / "og-image.png", (1200, 630), "OG IMAGE")
-    for i in range(1, 4):
-        placeholder(IMAGES / f"gallery-{i}.png", (600, 600), f"GALLERY {i}")
-    for i in range(1, 3):
-        placeholder(IMAGES / f"detail-{i}.png", (700, 500), f"DETAIL {i}")
-    for i in range(1, 5):
-        placeholder(IMAGES / f"feature-{i}.png", (600, 600), f"FEATURE {i}")
-    for i in range(1, 4):
-        avatar(IMAGES / f"avatar-{i}.png", f"AVATAR {i}")
-    placeholder(IMAGES / "cta-bg.png", (1200, 600), "CTA BG", DARK_BG, (51, 51, 51))
-    placeholder(IMAGES / "video-poster.png", (900, 600), "VIDEO POSTER", DARK_BG, (51, 51, 51))
+    print(f"Generando imágenes PNG ({GALLERY_SLOT_COUNT} slots de galería)…")
 
-    print("Generando iconos PNG...")
+    labels = {
+        "hero.png": "HERO",
+        "og-image.png": "OG IMAGE",
+        "cta-bg.png": "CTA BG",
+        "video-poster.png": "VIDEO POSTER",
+        "detail-1.png": "DETAIL 1",
+        "detail-2.png": "DETAIL 2",
+        "feature-1.png": "FEATURE 1",
+        "feature-2.png": "FEATURE 2",
+        "feature-3.png": "FEATURE 3",
+        "feature-4.png": "FEATURE 4",
+    }
+    for i in range(1, GALLERY_SLOT_COUNT + 1):
+        labels[f"gallery-{i}.png"] = f"GALLERY {i}"
+
+    for name, size in IMAGE_SPECS.items():
+        if name.startswith("avatar"):
+            avatar(IMAGES_DIR / name, name.replace(".png", "").upper().replace("-", " "))
+        elif name in ("cta-bg.png", "video-poster.png"):
+            placeholder(IMAGES_DIR / name, size, labels.get(name, name), DARK_BG, (51, 51, 51))
+        else:
+            placeholder(IMAGES_DIR / name, size, labels.get(name, name))
+
+    print("Generando iconos PNG…")
     icons = {
         "shipping": "ENVÍO",
         "quality": "CALIDAD",
         "secure": "SEGURO",
         "support": "SOPORTE",
         "return": "DEVOL.",
-        "cod": "CONTRA\nENTREGA",
+        "cod": "CONTRA ENTREGA",
     }
     for name, label in icons.items():
-        icon_png(ICONS / f"{name}.png", label.replace("\n", " "))
+        icon_png(ICONS_DIR / f"{name}.png", label)
 
-    social_icon(ICONS / "instagram.png", "I", (228, 64, 95))
-    social_icon(ICONS / "facebook.png", "f", (24, 119, 242))
-    social_icon(ICONS / "tiktok.png", "T", (0, 0, 0))
-    placeholder(ICONS / "visa.png", (96, 64), "VISA", (26, 31, 113), (26, 31, 113))
-    placeholder(ICONS / "mastercard.png", (96, 64), "MC", (37, 37, 37), (37, 37, 37))
-    placeholder(ICONS / "favicon.png", (32, 32), "★", (17, 17, 17), (17, 17, 17))
+    social_icon(ICONS_DIR / "instagram.png", "I", (228, 64, 95))
+    social_icon(ICONS_DIR / "facebook.png", "f", (24, 119, 242))
+    social_icon(ICONS_DIR / "tiktok.png", "T", (0, 0, 0))
+    placeholder(ICONS_DIR / "visa.png", (96, 64), "VISA", (26, 31, 113), (26, 31, 113))
+    placeholder(ICONS_DIR / "mastercard.png", (96, 64), "MC", (37, 37, 37), (37, 37, 37))
+    placeholder(ICONS_DIR / "favicon.png", (32, 32), "★", (17, 17, 17), (17, 17, 17))
 
     print("Listo.")
 
