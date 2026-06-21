@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <rect width="600" height="600" fill="#fafafa"/>
+  <rect x="120" y="120" width="360" height="360" rx="16" fill="#eeeeee"/>
+  <text x="300" y="320" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" fill="#bdbdbd">GALERÍA</text>
+</svg>

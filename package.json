@@ -5,6 +5,7 @@
   "description": "Copia estática de la landing Lokal Big Blanco - Calzados Elite",
   "scripts": {
     "start": "npx --yes serve . -p 3000",
-    "preview": "npm run start"
+    "preview": "npm run start",
+    "landing": "npx --yes serve landing -p 3001"
   }
 }
